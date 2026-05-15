@@ -20,7 +20,7 @@ class GameLogic:
         self.active = True
 
     def check_click(self, cx, cy):
-        # go through each difference and see if click is close enough
+        # check if click is close enough
         for diff in self.differences:
             if diff['found']:
                 continue
@@ -29,7 +29,7 @@ class GameLogic:
             mid_x = diff['x'] + diff['w'] // 2
             mid_y = diff['y'] + diff['h'] // 2
 
-            # use a tolerance based on region size
+            # some tolerance
             tol = max(diff['w'], diff['h']) // 2 + 10
 
             if abs(cx - mid_x) < tol and abs(cy - mid_y) < tol:
@@ -60,7 +60,7 @@ class GameLogic:
         return True
 
     def reveal(self):
-        # mark everything as found so we can draw circles
+        # show all
         for d in self.differences:
             if not d['found']:
                 d['found'] = True
